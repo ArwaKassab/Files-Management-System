@@ -2,7 +2,10 @@
 
 namespace App\Providers;
 
-// use Illuminate\Support\Facades\Gate;
+use App\Models\File;
+use App\Models\Group;
+use App\Policies\FilePolicy;
+use App\Policies\GroupPolicy;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
 class AuthServiceProvider extends ServiceProvider
@@ -13,7 +16,8 @@ class AuthServiceProvider extends ServiceProvider
      * @var array<class-string, class-string>
      */
     protected $policies = [
-        //
+        File::class => FilePolicy::class,
+//        Group::class => GroupPolicy::class,
     ];
 
     /**
@@ -21,6 +25,6 @@ class AuthServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        $this->registerPolicies();
     }
 }

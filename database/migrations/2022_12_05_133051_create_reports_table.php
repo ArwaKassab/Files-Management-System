@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('reports', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('file_id')->constrained('files')->restrictOnDelete();
+            $table->foreignId('file_id')->constrained('files')->onDelete('cascade');
             $table->string('operation_name');
             $table->string('user_name');
             $table->dateTime('operation_date');
